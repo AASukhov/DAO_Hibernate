@@ -1,13 +1,11 @@
-package com.example.dao;
+package com.example.dao.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
@@ -15,6 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "persons")
+@IdClass(PersonId.class)
 @Entity
 public class Person implements Serializable {
     @Id
@@ -24,5 +23,6 @@ public class Person implements Serializable {
     @Id
     private int age;
     private int phone_number;
-    private String city_of_living;
+    @Column (name = "city_of_living")
+    private String city;
 }
